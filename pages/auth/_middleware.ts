@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   ).json();
   if (currentUser.data)
     return NextResponse.redirect(
-      `${baseUrl}dashboard/${(currentUser.data.role as string).toLowerCase()}`,
+      `${baseUrl}dashboard/${(currentUser.data.Role as string).toLowerCase()}`,
       301
     );
   return NextResponse.next();

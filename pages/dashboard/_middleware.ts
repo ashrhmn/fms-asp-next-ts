@@ -17,7 +17,7 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
     return NextResponse.redirect(`${baseUrl}verify-email`);
 
   const validUrl = `/dashboard/${(
-    currentUser.data.role as string
+    currentUser.data.Role as string
   ).toLowerCase()}`;
   const url = req.page.name;
   console.log(validUrl, url, validUrl == url);
