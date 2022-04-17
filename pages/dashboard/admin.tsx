@@ -16,7 +16,7 @@ interface Props {
   hasError: boolean;
 }
 
-const tabNames = ["Overview", "User List", "Pending Flights", "Flight List"];
+const tabNames = ["Overview", "User List", "Upcoming Flights", "Flight List"];
 
 const AdminDashboard: NextPage<Props> = ({
   transports,
