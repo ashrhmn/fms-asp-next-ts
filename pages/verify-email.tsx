@@ -15,10 +15,10 @@ const VerifyEmailPage: NextPage = () => {
   const handleResendMail = async () => {
     setResendBtnDisabled(() => true);
     try {
-      const token = Cookies.get("token") ?? "";
+      const Authorization = Cookies.get("Authorization") ?? "";
       const { data: response } = await service().get(
         `${baseApiUrl}api/auth/resend-verification-mail`,
-        { headers: { token } }
+        { headers: { Authorization } }
       );
       alert(response);
     } catch (error) {
@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (
       `${baseApiUrl}api/auth/current-user`
     );
     console.log("V Curr", currentUser);
-    if (currentUser.data.verified)
+    if (currentUser.data.Verified)
       return { props: {}, redirect: { destination: "/dashboard" } };
   } catch (error) {
     console.log("v currerr :", error);

@@ -16,7 +16,7 @@ const SignInPage: NextPage = () => {
         username: usernameInputController.value,
         password: passwordInputController.value,
       });
-      Cookies.set("Authorization", response.data.value);
+      Cookies.set("Authorization", response.data.token);
       router.reload();
     } catch (error) {
       console.log("sign-in : ", error);

@@ -18,7 +18,7 @@ const SignUpPage: NextPage<Props> = ({ cities }) => {
   const phoneIc = useInput();
   const dobIc = useInput();
   const addressIc = useInput();
-  const cityIdIc = useInput(cities[0].id.toString());
+  const cityIdIc = useInput(cities[0].Id.toString());
 
   const router = useRouter();
 
@@ -98,9 +98,9 @@ const SignUpPage: NextPage<Props> = ({ cities }) => {
         <select {...cityIdIc} className="w-full p-4 rounded border-2">
           {cities.map((c) => (
             <option
-              value={c.id}
-              key={c.name}
-            >{`${c.name}, ${c.country}`}</option>
+              value={c.Id}
+              key={c.Name}
+            >{`${c.Name}, ${c.Country}`}</option>
           ))}
         </select>
         <div className="flex gap-4 justify-center">

@@ -88,7 +88,10 @@ const UserList = ({ users }: { users: IUser[] }) => {
       {
         label: "# of role based users",
         data: ROLES.map(
-          (role) => users.filter((u) => u.RoleEnum.Value == role).length
+          (role) =>
+            users.filter(
+              (u) => u.RoleEnum.Value.toLowerCase() == role.toLowerCase()
+            ).length
         ),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",

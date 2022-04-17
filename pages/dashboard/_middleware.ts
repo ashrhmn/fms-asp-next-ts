@@ -13,7 +13,7 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   if (!currentUser.data)
     return NextResponse.redirect(`${baseUrl}auth/sign-in`, 301);
 
-  if (!currentUser.data.verified)
+  if (!currentUser.data.Verified)
     return NextResponse.redirect(`${baseUrl}verify-email`);
 
   const validUrl = `/dashboard/${(
