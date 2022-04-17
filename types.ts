@@ -1,68 +1,70 @@
 export interface ICity {
-  id: number;
-  name: string;
-  country: string;
-  stopages: IStoppage[];
+  Id: number;
+  Name: string;
+  Country: string;
+  Stoppages: IStoppage[];
 }
 
 export interface IStoppage {
-  id: number;
-  name: string;
-  city_id: number;
-  route_index: number;
-  fare_from_root: number;
-  city: ICity;
+  Id: number;
+  Name: string;
+  CityId: number;
+  RouteIndex: number;
+  FareFromRoot: number;
+  City: ICity;
 }
 
 export interface ITransport {
-  id: number;
-  name: string;
-  maximum_seat: number;
-  created_by: number;
-  tickets: ITicket[];
+  Id: number;
+  Name: string;
+  MaximumSeat: number;
+  CreatedBy: number;
+  SeatInfos: ISeatInfo[];
 }
 
 export interface IFlight {
-  id: number;
-  transport_id: number;
-  from_stopage_id: number;
-  to_stopage_id: number;
-  day: string;
-  time: number;
-  date: string;
-  transport: ITransport;
-  fromstopage: IStoppage;
-  tostopage: IStoppage;
+  Id: number;
+  TransportId: number;
+  FromStoppageId: number;
+  ToStoppageId: number;
+  Day: string;
+  Time: number;
+  Date: string;
+  Transport: ITransport;
+  FromStoppage: IStoppage;
+  ToStoppage: IStoppage;
 }
 
-export interface ICity {
-  id: number;
-  name: string;
-  country: string;
+export interface ISeatInfo {
+  Id: number;
+  StartTime: string;
+  SeatNo: number;
+  TicketId: number;
+  TransportId: number;
+  AgeClassEnum: AgeClassEnum;
+  SeatClassEnum: SeatClassEnum;
+  Status: string;
 }
 
-export interface ITicket {
-  id: number;
-  start_time: string;
-  seat_no: number;
-  ticket_id: number;
-  transport_id: number;
-  age_class: string;
-  seat_class: string;
-  status: string;
+export interface AgeClassEnum {
+  Id: number;
+  Value: string;
 }
+
+export interface SeatClassEnum extends AgeClassEnum {}
+export interface RoleClassEnum extends AgeClassEnum {}
 
 export interface IUser {
-  id: number;
-  username: string;
-  name: string;
-  date_of_birth: string;
-  family_id: number;
-  address: string;
-  city_id: number;
-  email: string;
-  verified: boolean;
-  phone: string;
-  role: string;
-  city: ICity;
+  Id: number;
+  Username: string;
+  Name: string;
+  DateOfBirth: string;
+  FamilyId: number;
+  Address: string;
+  CityId: number;
+  Email: string;
+  Verified: boolean;
+  Phone: string;
+  RoleEnum: RoleClassEnum;
+  City: ICity;
 }

@@ -32,9 +32,9 @@ const UserList = ({ users }: { users: IUser[] }) => {
   };
 
   const cities = users
-    .map((user) => user.city)
+    .map((user) => user.City)
     .filter((city) => city != null)
-    .filter((v, i, s) => s.map((s) => s.id).indexOf(v.id) == i);
+    .filter((v, i, s) => s.map((s) => s.Id).indexOf(v.Id) == i);
 
   const generateRandomColors = (n: number, colorAlpha: number = 1) => {
     let bgColors: string[] = [];
@@ -55,11 +55,11 @@ const UserList = ({ users }: { users: IUser[] }) => {
     },
   });
   const cityPieData = {
-    labels: cities.map((c) => `${c.name}, ${c.country}`),
+    labels: cities.map((c) => `${c.Name}, ${c.Country}`),
     datasets: [
       {
         label: "# of People in City",
-        data: cities.map((c) => users.filter((u) => u.city_id == c.id).length),
+        data: cities.map((c) => users.filter((u) => u.CityId == c.Id).length),
         backgroundColor: generateRandomColors(cities.length).bgColors,
         borderColor: generateRandomColors(cities.length).borderColors,
         borderWidth: 1,
@@ -73,7 +73,7 @@ const UserList = ({ users }: { users: IUser[] }) => {
       {
         label: "# of Verified Users",
         data: [true, false].map(
-          (b) => users.filter((u) => u.verified == b).length
+          (b) => users.filter((u) => u.Verified == b).length
         ),
         backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
         borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
@@ -87,7 +87,9 @@ const UserList = ({ users }: { users: IUser[] }) => {
     datasets: [
       {
         label: "# of role based users",
-        data: ROLES.map((role) => users.filter((u) => u.role == role).length),
+        data: ROLES.map(
+          (role) => users.filter((u) => u.RoleEnum.Value == role).length
+        ),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -171,24 +173,24 @@ const UserList = ({ users }: { users: IUser[] }) => {
                   index <= pageNo * itemsPerPage
               )
               .map((user) => (
-                <tr key={user.id}>
-                  <td className="p-2 border-2">{user.id}</td>
-                  <td className="p-2 border-2">{user.name}</td>
-                  <td className="p-2 border-2">{user.username}</td>
-                  <td className="p-2 border-2">{user.email}</td>
-                  <td className="p-2 border-2">{user.phone}</td>
-                  <td className="p-2 border-2">{user.date_of_birth}</td>
-                  <td className="p-2 border-2">{user.address}</td>
+                <tr key={user.Id}>
+                  <td className="p-2 border-2">{user.Id}</td>
+                  <td className="p-2 border-2">{user.Name}</td>
+                  <td className="p-2 border-2">{user.Username}</td>
+                  <td className="p-2 border-2">{user.Email}</td>
+                  <td className="p-2 border-2">{user.Phone}</td>
+                  <td className="p-2 border-2">{user.DateOfBirth}</td>
+                  <td className="p-2 border-2">{user.Address}</td>
                   <td className="p-2 border-2">
-                    {user.city != null && (
+                    {user.City != null && (
                       <>
-                        {user.city.name}, {user.city.country}
+                        {user.City.Name}, {user.City.Country}
                       </>
                     )}
                   </td>
-                  <td className="p-2 border-2">{user.role}</td>
+                  <td className="p-2 border-2">{user.RoleEnum.Value}</td>
                   <td className="p-2 border-2">
-                    {user.verified ? "Yes" : "No"}
+                    {user.Verified ? "Yes" : "No"}
                   </td>
                 </tr>
               ))}

@@ -1,5 +1,4 @@
 import React from "react";
-import { Line } from "react-chartjs-2";
 
 import {
   Chart as ChartJS,
@@ -42,14 +41,14 @@ const AdminOverview = ({
   transports: ITransport[];
   cities: ICity[];
 }) => {
-  const labels = transports.map((t) => t.name);
+  const labels = transports.map((t) => t.Name);
 
   const dataStoppages = {
-    labels: cities.map((c) => c.name),
+    labels: cities.map((c) => c.Name),
     datasets: [
       {
         label: "Number of stoppages in Cities",
-        data: cities.map((c) => c.stopages.length),
+        data: cities.map((c) => c.Stoppages.length),
         backgroundColor: "rgba(115, 199, 132, 0.5)",
       },
     ],
@@ -60,7 +59,7 @@ const AdminOverview = ({
     datasets: [
       {
         label: "Tickets Sold",
-        data: transports.map((t) => t.tickets.length),
+        data: transports.map((t) => t.SeatInfos.length),
         backgroundColor: "rgba(115, 199, 132, 0.5)",
       },
     ],
@@ -72,7 +71,8 @@ const AdminOverview = ({
       {
         label: "Adult",
         data: transports.map(
-          (t) => t.tickets.filter((a) => a.age_class == "Adult").length
+          (t) =>
+            t.SeatInfos.filter((a) => a.AgeClassEnum.Value == "Adult").length
         ),
         backgroundColor: "rgba(199, 115, 132, 0.5)",
       },
@@ -80,14 +80,17 @@ const AdminOverview = ({
       {
         label: "Children",
         data: transports.map(
-          (t) => t.tickets.filter((ti) => ti.age_class == "Children").length
+          (t) =>
+            t.SeatInfos.filter((ti) => ti.AgeClassEnum.Value == "Children")
+              .length
         ),
         backgroundColor: "rgba(115, 199, 132, 0.5)",
       },
       {
         label: "Infant",
         data: transports.map(
-          (t) => t.tickets.filter((ti) => ti.age_class == "Infant").length
+          (t) =>
+            t.SeatInfos.filter((ti) => ti.AgeClassEnum.Value == "Infant").length
         ),
         backgroundColor: "rgba(115, 199, 0, 0.5)",
       },
@@ -100,7 +103,8 @@ const AdminOverview = ({
       {
         label: "Economy",
         data: transports.map(
-          (t) => t.tickets.filter((a) => a.seat_class == "Economy").length
+          (t) =>
+            t.SeatInfos.filter((a) => a.SeatClassEnum.Value == "Economy").length
         ),
         backgroundColor: "rgba(199, 115, 132, 0.5)",
       },
@@ -109,14 +113,18 @@ const AdminOverview = ({
         label: "Premium Economy",
         data: transports.map(
           (t) =>
-            t.tickets.filter((ti) => ti.seat_class == "Premium Economy").length
+            t.SeatInfos.filter(
+              (ti) => ti.SeatClassEnum.Value == "Premium Economy"
+            ).length
         ),
         backgroundColor: "rgba(115, 199, 132, 0.5)",
       },
       {
         label: "Business",
         data: transports.map(
-          (t) => t.tickets.filter((ti) => ti.seat_class == "Business").length
+          (t) =>
+            t.SeatInfos.filter((ti) => ti.SeatClassEnum.Value == "Business")
+              .length
         ),
         backgroundColor: "rgba(115, 199, 0, 0.5)",
       },
